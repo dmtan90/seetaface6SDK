@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -58,6 +59,8 @@ public class LoadNativeCore {
                     String value = (String) entry.getValue();
                     DllItem dllItem = new DllItem();
                     dllItem.setKey(key);
+//                    logger.info("key: " + key);
+//                    logger.info("value: " + value);
                     if (key.contains("base")) {
                         if (value.contains("tennis")) {
                             dllItem.setValue(getPrefix() + "base/" + device + "/" + value);
@@ -91,8 +94,13 @@ public class LoadNativeCore {
 
                 // 加载 dll文件
                 fileList.forEach(file -> {
-                    System.load(file.getAbsolutePath());
-                    logger.info(String.format("load %s finish", file.getAbsolutePath()));
+                    if(file.exists()){
+                        System.load(file.getAbsolutePath());
+                        logger.info(String.format("load %s finish", file.getAbsolutePath()));
+                    }
+                    else{
+                        logger.warning("File " + file.getAbsolutePath() + " not existed");
+                    }
                 });
                 logger.info("............END !");
 
