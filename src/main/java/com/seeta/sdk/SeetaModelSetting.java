@@ -18,7 +18,7 @@ public class SeetaModelSetting {
             //添加验证
             File file = new File(models[i]);
             if (!file.exists()) {
-               throw  new FileNotFoundException("模型文件没有找到！");
+               throw  new FileNotFoundException("Model file not found！");
             }
             this.model[i] = models[i];
 
@@ -35,7 +35,7 @@ public class SeetaModelSetting {
             //添加验证
             File file = new File(models[i]);
             if (!file.exists()) {
-                throw  new FileNotFoundException("模型文件没有找到！");
+                throw  new FileNotFoundException("Model file not found！");
             }
             this.model[i] = models[i];
 
