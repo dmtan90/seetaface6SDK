@@ -5,9 +5,8 @@ import com.seeta.pool.SeetaConfSetting;
 import com.seeta.sdk.FaceDetector;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaRect;
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * 人脸位置评估器
  */

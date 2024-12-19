@@ -7,8 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.stream.Collectors;
 
 /**
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 public class LoadNativeCore {
 
-    private static Logger logger = Logger.getLogger(LoadNativeCore.class.getName());
+    private static Logger logger = LoggerFactory.getLogger(LoadNativeCore.class.getName());
 
     /**
      * 定义dll 路径和加载顺序的文件
@@ -38,7 +38,7 @@ public class LoadNativeCore {
     /**
      * 是否加载过
      */
-    private static volatile boolean isLoaded = false;
+    public static volatile boolean isLoaded = false;
 
 
     public static synchronized void LOAD_NATIVE(SeetaDevice seetaDevice) {
@@ -99,13 +99,13 @@ public class LoadNativeCore {
                         logger.info(String.format("load %s finish", file.getAbsolutePath()));
                     }
                     else{
-                        logger.warning("File " + file.getAbsolutePath() + " not existed");
+                        logger.error("File " + file.getAbsolutePath() + " not existed");
                     }
                 });
                 logger.info("............END !");
 
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage(), e);
             }
             isLoaded = true;
         }

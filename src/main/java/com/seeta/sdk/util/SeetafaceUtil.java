@@ -71,7 +71,7 @@ public class SeetafaceUtil {
      */
     public static SeetaImageData toSeetaImageData(BufferedImage bufferedImage) {
         if (bufferedImage == null) {
-            throw new NullPointerException("图片不能为空.");
+            throw new NullPointerException("Image is NULL.");
         }
         try {
             SeetaImageData imageData = new SeetaImageData(bufferedImage.getWidth(), bufferedImage.getHeight(), 3);
