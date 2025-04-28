@@ -59,8 +59,8 @@ public class LoadNativeCore {
                     String value = (String) entry.getValue();
                     DllItem dllItem = new DllItem();
                     dllItem.setKey(key);
-//                    logger.info("key: " + key);
-//                    logger.info("value: " + value);
+                    logger.info("key: " + key);
+                    logger.info("value: " + value);
                     if (key.contains("base")) {
                         if (value.contains("tennis")) {
                             dllItem.setValue(getPrefix() + "base/" + device + "/" + value);
@@ -94,6 +94,7 @@ public class LoadNativeCore {
 
                 // 加载 dll文件
                 fileList.forEach(file -> {
+                    logger.info("Load: {}", file.getAbsolutePath());
                     if(file.exists()){
                         System.load(file.getAbsolutePath());
                         logger.info(String.format("load %s finish", file.getAbsolutePath()));
